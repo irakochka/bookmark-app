@@ -12,7 +12,7 @@ onMounted(() => {
 <template>
   <ul class="category-list">
     <li v-for="category in store.categories" :key="category.id">
-      <a class="category-list__item" :href="`/${category.alias}`">{{ category.name }}</a>
+      <RouterLink active-class="active" class="category-list__item" :to="`/main/${category.alias}`">{{ category.name }}</RouterLink>
     </li>
   </ul>
 </template>
@@ -30,5 +30,8 @@ onMounted(() => {
     &:hover {
       color: var(--color-accent);
     }
+  }
+  .category-list__item.active {
+    color: var(--color-accent);
   }
 </style>
