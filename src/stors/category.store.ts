@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { API_ROUTES, http } from '@/api.ts'
+import { API_ROUTES, client } from '@/api.ts'
 import type { Category } from '@/interfaces/category.interface.ts'
 
 export const useCategoryStore = defineStore('category', () => {
   const categories = ref<Category[]>([]);
 
   async function fetchCategories() {
-    const { data } = await http.get<Category[]>(API_ROUTES.categories);
+    const { data } = await client().get<Category[]>(API_ROUTES.categories);
     categories.value = data;
   }
 

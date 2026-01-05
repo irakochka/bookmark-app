@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { API_ROUTES, http } from '@/api.ts'
+import { API_ROUTES, client } from '@/api.ts'
 import type { Bookmark } from '@/interfaces/bookmark.interface.ts'
 
 export const useBookmarkStore = defineStore('bookmarks', () => {
   const bookmarks = ref<Bookmark[]>([]);
 
   async function fetchBookmarks(categoryId: number) {
-    const { data } = await http.get<Bookmark[]>(API_ROUTES.bookmarks(categoryId));
+    const { data } = await client().get<Bookmark[]>(API_ROUTES.bookmarks(categoryId));
     bookmarks.value = data;
   }
 
