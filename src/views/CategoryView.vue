@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCategoryStore } from '@/stors/category.store.ts';
 import { useRoute, useRouter } from 'vue-router'
-import { computed, ref, watch } from 'vue'
+import { computed, watch } from 'vue'
 import { useBookmarkStore } from '@/stors/bookmark.store.ts'
 import CategoryHeader from '@/components/CategoryHeader.vue'
 import BookmarkCard from '@/components/BookmarkCard.vue'

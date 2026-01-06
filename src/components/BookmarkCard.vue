@@ -4,15 +4,19 @@
   import IconLink from '@/components/IconLink.vue'
   import ButtonIconBig from '@/components/ButtonIconBig.vue'
   import { useBookmarkStore } from '@/stors/bookmark.store.ts'
+  import PopupConfirm from '@/components/PopupConfirm.vue'
+  import { ref } from 'vue'
 
   const { id, category_id, title, image, url } = defineProps<Bookmark>();
   const bookmarkStore = useBookmarkStore();
+  const isOpened = ref<boolean>(false);
 
   function openLink() {
     window.open(url, '_blank');
   }
 
   function deleteBookmark() {
+    isOpened.value = !isOpened.value;
     bookmarkStore.deleteBookmark(id, category_id);
   }
 </script>
@@ -24,13 +28,14 @@
       {{ title }}
     </div>
     <div class="bookmark-card__footer">
-      <ButtonIconBig @click="deleteBookmark">
+      <ButtonIconBig @click="isOpened = !isOpened">
         <IconTrash/>
       </ButtonIconBig>
       <ButtonIconBig @click="openLink">
         <IconLink/>
       </ButtonIconBig>
     </div>
+    <PopupConfirm :is-opened="isOpened" text="Вы уверены, что хотите удалить закладку?" @cancel="isOpened = !isOpened" @ok="deleteBookmark"/>
   </div>
 </template>
 
