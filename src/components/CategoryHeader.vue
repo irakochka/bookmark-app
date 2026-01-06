@@ -40,7 +40,7 @@ function deleteCategory() {
       </ButtonCommon>
     </div>
     <div v-if="isEdited" class="category-header__wrapper">
-      <InputString v-model="newCategoryName" class="category-header__input"/>
+      <InputString v-model="newCategoryName" class="category-header__input" is-focused/>
       <ButtonCommon @click="updateCategory()">
         <IconOk />
       </ButtonCommon>

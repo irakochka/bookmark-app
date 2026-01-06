@@ -29,7 +29,7 @@ function addBookmark() {
       <IconNew />
     </ButtonIconBig>
     <div class="bookmark-add__form" v-else>
-      <InputString v-model="newUrl" />
+      <InputString v-model="newUrl" is-focused />
       <ButtonCommon @click="addBookmark">
         <IconOk />
       </ButtonCommon>
