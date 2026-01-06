@@ -23,7 +23,7 @@ import ProfileAvatar from '@/components/ProfileAvatar.vue'
   margin: 140px auto 0;
   display: flex;
   min-height: calc(100vh - 140px);
-  gap: 200px;
+  gap: 20px;
 }
 .nav {
   display: flex;

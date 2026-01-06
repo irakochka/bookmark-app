@@ -3,6 +3,8 @@ import { onMounted } from 'vue'
 import { useCategoryStore } from '@/stors/category.store.ts'
 import { useAuthStore } from '@/stors/auth.store.ts'
 import { useRouter } from 'vue-router'
+import ButtonCommon from '@/components/ButtonCommon.vue'
+import IconNew from '@/components/IconNew.vue'
 
 const router = useRouter();
 const store = useCategoryStore();
@@ -24,6 +26,13 @@ function logout() {
       <RouterLink active-class="active" class="category-list__item" :to="`/main/${category.alias}`">{{ category.name }}</RouterLink>
     </li>
     <li>
+      <a href="#" class="category-list__item" @click="store.createCategory()">
+        <ButtonCommon>
+          <IconNew/>
+        </ButtonCommon>
+      </a>
+    </li>
+    <li>
       <a href="#" class="category-list__item" @click="logout">Выйти</a>
     </li>
   </ul>
@@ -34,7 +43,7 @@ function logout() {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
   }
   .category-list__item {
     color: var(--color-fg);

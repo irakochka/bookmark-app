@@ -8,7 +8,11 @@ export const API_ROUTES = {
   },
   profile: "profile",
   categories: "categories",
-  bookmarks: (id: number) => `categories/${id}/bookmarks`
+  bookmarks: {
+    get: (id: number) => `categories/${id}/bookmarks`,
+    delete: (id: number) => `bookmarks/${id}`,
+    create: () => 'bookmarks',
+  }
 }
 
 // export const http = axios.create({
